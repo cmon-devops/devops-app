@@ -56,6 +56,7 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        cd k8s # Change to the correct directory
+        cd 
+        cd k8s/
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
