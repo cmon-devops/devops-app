@@ -51,14 +51,8 @@ jobs:
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
 
-    - name: List repository files
-      run: |
-        pwd
-        ls -R k8s
-
     - name: Deploy to Kubernetes
       run: |
-        cd 
-        cd k8s/
-        kubectl apply -f deployment.yaml
-        kubectl apply -f service.yaml
+        kubectl apply -f $GITHUB_WORKSPACE/k8s/deployment.yaml
+        kubectl apply -f $GITHUB_WORKSPACE/k8s/service.yaml
+
