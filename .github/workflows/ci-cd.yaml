@@ -24,9 +24,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        # Build the Docker image using the Dockerfile in the app directory
-        docker build -t rishma18121998/flask-app:latest -f ./app/Dockerfile ./app
-        # Push the Docker image to Docker Hub
+        docker build -t rishma18121998/flask-app:latest ./app
         docker push rishma18121998/flask-app:latest
 
   deploy:
@@ -53,8 +51,10 @@ jobs:
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
 
+    - name: List repository files
+      run: ls -R
+
     - name: Deploy to Kubernetes
       run: |
-        pwd
-        kubectl apply -f ../k8s/deployment.yaml
-        kubectl apply -f ../k8s/service.yaml
+        kubectl apply -f $GITHUB_WORKSPACE/k8s/deployment.yaml
+        kubectl apply -f $GITHUB_WORKSPACE/k8s/service.yaml
