@@ -50,6 +50,9 @@ jobs:
         sudo usermod -aG docker dockeruser
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
+        
+    - name: List repository files
+      run: ls -R
 
     - name: Deploy to Kubernetes
       run: |
