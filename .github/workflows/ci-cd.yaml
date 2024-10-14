@@ -50,11 +50,12 @@ jobs:
         sudo usermod -aG docker dockeruser
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
-        
+
     - name: List repository files
       run: ls -R
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
+        cd k8s # Change to the correct directory
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
