@@ -52,7 +52,9 @@ jobs:
         sudo su - dockeruser -c "minikube start --driver=docker"
 
     - name: List repository files
-      run: ls -R k8s
+      run: |
+        pwd
+        ls -R k8s
 
     - name: Deploy to Kubernetes
       run: |
