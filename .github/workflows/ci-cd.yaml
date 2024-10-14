@@ -54,10 +54,10 @@ jobs:
     - name: Print working directory
       run: pwd
 
-    - name: List files in the repository root
-      run: ls -R /home/runner/work/devops-app
+    - name: List files in the repository
+      run: ls -R /home/runner/work/devops-app/devops-app  # List all files in the devops-app directory
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f ../k8s/deployment.yaml
-        kubectl apply -f ../k8s/service.yaml
+        kubectl apply -f /home/runner/work/devops-app/devops-app/k8s/deployment.yaml
+        kubectl apply -f /home/runner/work/devops-app/devops-app/k8s/service.yaml
