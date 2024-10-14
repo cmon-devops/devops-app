@@ -54,8 +54,8 @@ jobs:
     - name: Print working directory
       run: pwd
 
-    - name: List files in k8s directory
-      run: ls -R ../k8s  # This will show the contents of the k8s directory
+    - name: List files in the repository root
+      run: ls -R /home/runner/work/devops-app
 
     - name: Deploy to Kubernetes
       run: |
