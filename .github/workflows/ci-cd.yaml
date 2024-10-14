@@ -61,5 +61,3 @@ jobs:
       run: |
         kubectl apply -f https://raw.githubusercontent.com/cmon-devops/devops-app/main/k8s/deployment.yaml --validate=false
         kubectl apply -f https://raw.githubusercontent.com/cmon-devops/devops-app/main/k8s/service.yaml --validate=false
-
-  
