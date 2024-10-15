@@ -23,12 +23,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and Push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./  # Set the context to the root of your project
-        file: ./app/Dockerfile  # Path to the Dockerfile
-        push: true
-        tags: rishma18121998/flask-app:latest
+      run: |
+          docker build -t rishma18121998/flask-app:latest -f app/Dockerfile .
+          docker push rishma18121998/flask-app:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,5 +56,5 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s/deployment.yaml --validate=false
-        kubectl apply -f k8s/service.yaml --validate=false
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
