@@ -41,11 +41,14 @@ jobs:
       run: |
         sudo snap install kubectl --classic
 
-    - name: Set up Minikube as a non-root user
+    - name: Install Minikube
       run: |
         curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         chmod +x minikube
         sudo mv minikube /usr/local/bin/
+
+    - name: Create non-root user and start Minikube
+      run: |
         sudo useradd -m dockeruser
         sudo usermod -aG docker dockeruser
         sudo chown -R dockeruser:dockeruser /home/dockeruser
@@ -55,9 +58,9 @@ jobs:
       run: pwd
 
     - name: List files in the repository
-      run: ls -R /home/runner/work/devops-app/devops-app  # List all files in the devops-app directory
+      run: ls -R  # List all files in the repository
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f /home/runner/work/devops-app/devops-app/k8s/deployment.yaml --validate=false
-        kubectl apply -f /home/runner/work/devops-app/devops-app/k8s/service.yaml --validate=false
+        kubectl apply -f k8s/deployment.yaml --validate=false
+        kubectl apply -f k8s/service.yaml --validate=false
