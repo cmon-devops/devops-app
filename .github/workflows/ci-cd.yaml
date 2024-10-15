@@ -57,6 +57,11 @@ jobs:
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
 
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.25.0'
+
     - name: Deploy to Kubernetes
       run: |
         pwd
