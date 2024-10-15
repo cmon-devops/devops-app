@@ -61,9 +61,3 @@ jobs:
       uses: azure/setup-kubectl@v3
       with:
         version: 'v1.25.0'
-
-    - name: Deploy to Kubernetes
-      run: |
-        pwd
-        kubectl apply -f deployment.yaml
-        kubectl apply -f service.yaml
