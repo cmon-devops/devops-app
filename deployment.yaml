@@ -17,3 +17,10 @@ spec:
         image: rishma18121998/flask-app:latest
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            memory: "128Mi"  # Minimum memory allocated
+            cpu: "250m"      # Minimum CPU allocated
+          limits:
+            memory: "256Mi"  # Maximum memory allowed
+            cpu: "500m"      # Maximum CPU allowed
