@@ -6,7 +6,7 @@ COPY requirements.txt /app/  # Correct path to requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY . .  # Copy the rest of your application files
+COPY app/ .  # Copy the rest of your application files
 
 EXPOSE 5000
 
