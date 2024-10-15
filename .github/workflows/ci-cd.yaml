@@ -25,7 +25,7 @@ jobs:
     - name: Build and Push Docker image
       uses: docker/build-push-action@v2
       with:
-        context: ./app  # Set the context to the app directory
+        context: ./  # Set the context to the root of your project
         file: ./app/Dockerfile  # Path to the Dockerfile
         push: true
         tags: rishma18121998/flask-app:latest
@@ -56,12 +56,6 @@ jobs:
         sudo usermod -aG docker dockeruser
         sudo chown -R dockeruser:dockeruser /home/dockeruser
         sudo su - dockeruser -c "minikube start --driver=docker"
-
-    - name: Print working directory
-      run: pwd
-
-    - name: List files in the repository
-      run: ls -R  # List all files in the repository
 
     - name: Deploy to Kubernetes
       run: |
