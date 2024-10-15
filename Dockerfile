@@ -5,11 +5,11 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy the requirements file and install dependencies
-COPY requirements.txt .
+COPY app/requirements.txt .  # Update this line to point to the correct location
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
-COPY . .
+COPY app/ .  # This will copy all files from the app directory
 
 # Expose the port the app runs on
 EXPOSE 5000
